@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/LOGO.jpg";
 
 export default function Register() {
@@ -21,6 +22,8 @@ export default function Register() {
     setCurrentExpense(queryParams.get("currentExpense"));
     setInflation(queryParams.get("inflation"));
   });
+
+  const navigate = useNavigate();
 
   const register = () => {
     if (
@@ -45,8 +48,9 @@ export default function Register() {
         .then((res) => {
           if (res.data !== "Email Already Exists!!!") {
             localStorage.setItem("token", res.data.token);
-            window.location.href =
-              "http://localhost:3000/passive?id=" + res.data.id;
+            // window.location.href =
+            //   "http://localhost:3000/passive?id=" + res.data.id;
+            navigate("/passive?id=" + res.data.id);
           } else {
             console.log("Email Already Exists!!!");
           }
@@ -270,7 +274,8 @@ export default function Register() {
                 marginBottom: "10px",
               }}
               onClick={() =>
-                (window.location.href = "http://localhost:3000/login")
+                // (window.location.href = "http://localhost:3000/login")
+                navigate("/login")
               }
             >
               Already have an account?

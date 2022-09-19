@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/LOGO.jpg";
 
 export default function Passive() {
@@ -14,6 +15,8 @@ export default function Passive() {
     const queryParams = new URLSearchParams(window.location.search);
     setId(queryParams.get("id"));
   });
+
+  const navigate = useNavigate();
 
   const next = () => {
     if (
@@ -34,7 +37,8 @@ export default function Passive() {
         })
         .then((res) => {
           if (res.data === "success") {
-            window.location.href = "http://localhost:3000/table?id=" + id;
+            // window.location.href = "http://localhost:3000/table?id=" + id;
+            navigate("/table?id=" + id);
           } else {
             console.log("Failed!!");
           }

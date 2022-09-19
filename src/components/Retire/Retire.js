@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import logo from "../../assets/LOGO.jpg";
 
@@ -30,6 +31,8 @@ export default function Retire() {
     }
     return age;
   }
+
+  const navigate = useNavigate();
 
   const next = () => {
     if (
@@ -258,15 +261,27 @@ export default function Retire() {
                           fontWeight: "bold",
                         }}
                         onClick={() =>
-                          (window.location.href =
-                            "http://localhost:3000/register?retireAge=" +
-                            retireAge +
-                            "&dob=" +
-                            dob +
-                            "&currentExpense=" +
-                            currentExpense +
-                            "&inflation=" +
-                            inflation)
+                          // (window.location.href =
+                          //   "http://localhost:3000/register?retireAge=" +
+                          //   retireAge +
+                          //   "&dob=" +
+                          //   dob +
+                          //   "&currentExpense=" +
+                          //   currentExpense +
+                          //   "&inflation=" +
+                          //   inflation)
+                          (
+                            navigate(
+                              "/register?retireAge=" +
+                                retireAge +
+                                "&dob=" +
+                                dob +
+                                "&currentExpense=" +
+                                currentExpense +
+                                "&inflation=" +
+                                inflation
+                          )
+                          )
                         }
                       >
                         click here.

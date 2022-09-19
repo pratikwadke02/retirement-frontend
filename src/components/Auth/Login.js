@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/LOGO.jpg";
 
 export default function Login() {
   const [e_mail, setE_mail] = useState();
   const [password, setPassword] = useState();
+
+  const navigate = useNavigate();
 
   const login = () => {
     if (e_mail !== undefined && password !== undefined) {
@@ -16,8 +19,9 @@ export default function Login() {
         .then((res) => {
           if (res.data.message === "Login successful") {
             localStorage.setItem("token", res.data.token);
-            window.location.href =
-              "http://localhost:3000/table?id=" + res.data.id;
+            // window.location.href =
+            //   "http://localhost:3000/table?id=" + res.data.id;
+            navigate("/table?id=" + res.data.id);
           } else {
             console.log("No User Found");
           }
