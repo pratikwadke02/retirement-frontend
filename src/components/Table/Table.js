@@ -75,7 +75,7 @@ export default function Table(props) {
     } else {
       const gData = async () => {
         await axios
-          .get("http://localhost:5000/api/user/" + props.id)
+          .get("https://s1crorek.herokuapp.com/api/user/" + props.id)
           .then((res) => {
             setInrRate(res.data[0].expectedInvestmentRate / 100);
             generateData(res.data[0]);

@@ -24,7 +24,7 @@ export default function Passive() {
       retirementCorpus !== undefined
     ) {
       axios
-        .post("http://localhost:5000/api/user/id", {
+        .post("https://s1crorek.herokuapp.com/api/user/id", {
           currentMonthly: currentMonthly,
           fixedMonthly: fixedMonthly,
           expectedGrowth: expectedGrowth,

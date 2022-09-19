@@ -9,7 +9,7 @@ export default function Login() {
   const login = () => {
     if (e_mail !== undefined && password !== undefined) {
       const response = axios
-        .post("http://localhost:5000/api/user/login", {
+        .post("https://s1crorek.herokuapp.com/api/user/login", {
           e_mail: e_mail,
           password: password,
         })

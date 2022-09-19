@@ -31,7 +31,7 @@ export default function Register() {
       terms === true
     ) {
       const response = axios
-        .post("http://localhost:5000/api/user", {
+        .post("https://s1crorek.herokuapp.com/api/user", {
           name: name,
           mobile: mobile,
           e_mail: e_mail,
