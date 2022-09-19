@@ -8,7 +8,7 @@ import LoginPage from "./pages/login";
 
 function App() {
   return (
-    <Router basename="/retirement">
+    <Router>
       <Routes>
         <Route path="/" element={<RetirePage />} />
         <Route path="/passive" element={<PassivePage />} />
