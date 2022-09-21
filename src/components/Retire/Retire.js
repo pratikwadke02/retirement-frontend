@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import logo from "../../assets/LOGO.jpg";
@@ -44,7 +43,7 @@ export default function Retire() {
       const age = getAge(dob);
       const gap = retireAge - age;
       const inf = inflation / 100;
-      const monE = (currentExpense * (1 + inf)) ^ gap;
+      const monE = Math.round(currentExpense * Math.pow(1 + inf, gap));
       setMonExp(monE);
       setData(true);
 
@@ -176,7 +175,7 @@ export default function Retire() {
                     style={{ fontWeight: "bold", color: "white" }}
                     className="form-label"
                   >
-                    Estimated inflation rate
+                    Estimated inflation rate (in %)
                   </label>
                 </div>
               </div>
@@ -218,11 +217,17 @@ export default function Retire() {
                     will be{" "}
                     <label style={{ color: "#ffd700", fontWeight: "bold" }}>
                       {" "}
-                      {monExp}
+                      ₹{monExp}
                     </label>
                   </p>
                   <p>
-                    It’s Easy to understand that your monthly expenses will be %
+                    It’s Easy to understand that your monthly expenses will be{" "}
+                    <label style={{ color: "#ffd700", fontWeight: "bold" }}>
+                      {Math.round(
+                        ((monExp - currentExpense) / currentExpense) * 100
+                      )}
+                      %
+                    </label>{" "}
                     higher than your current monthly expenses.
                   </p>
                   <p>
@@ -270,17 +275,15 @@ export default function Retire() {
                           //   currentExpense +
                           //   "&inflation=" +
                           //   inflation)
-                          (
-                            navigate(
-                              "/register?retireAge=" +
-                                retireAge +
-                                "&dob=" +
-                                dob +
-                                "&currentExpense=" +
-                                currentExpense +
-                                "&inflation=" +
-                                inflation
-                          )
+                          navigate(
+                            "/register?retireAge=" +
+                              retireAge +
+                              "&dob=" +
+                              dob +
+                              "&currentExpense=" +
+                              currentExpense +
+                              "&inflation=" +
+                              inflation
                           )
                         }
                       >
