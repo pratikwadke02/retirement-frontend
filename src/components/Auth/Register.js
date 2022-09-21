@@ -26,38 +26,38 @@ export default function Register() {
   const navigate = useNavigate();
 
   const register = () => {
-    if (
-      name !== undefined &&
-      mobile !== undefined &&
-      e_mail !== undefined &&
-      gender !== undefined &&
-      terms === true
-    ) {
-      const response = axios
-        .post("https://s1crorek.herokuapp.com/api/user", {
-          name: name,
-          mobile: mobile,
-          e_mail: e_mail,
-          gender: gender,
-          dob: dob,
-          retireAge: retireAge,
-          currentExpense: currentExpense,
-          inflation: inflation,
-          news_letter: news_letter,
-        })
-        .then((res) => {
-          if (res.data !== "Email Already Exists!!!") {
-            localStorage.setItem("token", res.data.token);
-            // window.location.href =
-            //   "http://localhost:3000/passive?id=" + res.data.id;
-            navigate("/passive?id=" + res.data.id);
-          } else {
-            console.log("Email Already Exists!!!");
-          }
-        });
-    } else {
-      alert("Enter Data!!!");
-    }
+    // if (
+    //   name !== undefined &&
+    //   mobile !== undefined &&
+    //   e_mail !== undefined &&
+    //   gender !== undefined &&
+    //   terms === true
+    // ) {
+    const response = axios
+      .post("https://s1crorek.herokuapp.com/api/user", {
+        name: name,
+        mobile: mobile,
+        e_mail: e_mail,
+        gender: gender,
+        dob: dob,
+        retireAge: retireAge,
+        currentExpense: currentExpense,
+        inflation: inflation,
+        news_letter: news_letter,
+      })
+      .then((res) => {
+        if (res.data !== "Email Already Exists!!!") {
+          localStorage.setItem("token", res.data.token);
+          // window.location.href =
+          //   "http://localhost:3000/passive?id=" + res.data.id;
+          navigate("/passive?id=" + res.data.id);
+        } else {
+          console.log("Email Already Exists!!!");
+        }
+      });
+    // } else {
+    //   alert("Enter Data!!!");
+    // }
   };
 
   return (
@@ -330,8 +330,8 @@ export default function Register() {
         </div>
       </div>
       <div
-        className="col-xl-6 d-none d-xl-block"
-        style={{ backgroundColor: "#ffd700" }}
+        className="col-xl-4"
+        style={{ backgroundColor: "#ffd700", height: "100vh" }}
       ></div>
     </div>
     //     </div>

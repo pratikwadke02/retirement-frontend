@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import logo from "../../assets/LOGO.jpg";
+import dayjs from "dayjs";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { InputGroup } from "react-bootstrap";
 
 export default function Retire() {
-  const [dob, setDob] = useState();
+  const [dob, setDob] = useState(dayjs(new Date()));
   const [retireAge, setRetireAge] = useState();
   const [currentExpense, setCurrentExpense] = useState();
   const [inflation, setInflation] = useState();
@@ -114,12 +121,32 @@ export default function Retire() {
               </div>
               <div className="col-md-6 mb-3">
                 <div className="form-outline">
-                  <input
+                  {/* <input
                     type="date"
                     id="form3Example1n"
                     className="form-control form-control-sm"
                     onChange={(e) => setDob(e.target.value)}
-                  />
+                  /> */}
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <MobileDatePicker
+                      className="form-control form-control-sm"
+                      inputFormat="DD/MM/YYYY"
+                      value={dob}
+                      onChange={setDob}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          InputProps={{
+                            style: {
+                              fontSize: 14,
+                              height: 32,
+                              marginLeft: -5,
+                            },
+                          }}
+                        />
+                      )}
+                    />
+                  </LocalizationProvider>
                 </div>
               </div>
             </div>
@@ -297,12 +324,9 @@ export default function Retire() {
           </div>
         </div>
         <div
-          className="col-xl-6 d-none d-xl-block"
-          style={{ backgroundColor: "#ffd700" }}
+          className="col-xl-4"
+          style={{ backgroundColor: "#ffd700", height: "100vh" }}
         ></div>
-        {/* </div>
-          </div>
-        </div> */}
       </div>
 
       {/* {data ? (

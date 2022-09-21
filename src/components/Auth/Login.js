@@ -130,8 +130,8 @@ export default function Login() {
                 </div>
               </div>
               <div
-                className="col-xl-6 d-none d-xl-block"
-                style={{ backgroundColor: "#ffd700" }}
+                className="col-xl-4"
+                style={{ backgroundColor: "#ffd700", height: "100vh" }}
               ></div>
             </div>
           </div>
