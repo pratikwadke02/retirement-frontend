@@ -153,9 +153,7 @@ export default function Table(props) {
                 </label>
                 <label style={{ marginRight: "30px" }}>
                   Retirement Age:{" "}
-                  <label style={{ fontWeight: "bold" }}>
-                    ₹{data.retireAge}
-                  </label>
+                  <label style={{ fontWeight: "bold" }}>{data.retireAge}</label>
                 </label>
               </div>
               <input
